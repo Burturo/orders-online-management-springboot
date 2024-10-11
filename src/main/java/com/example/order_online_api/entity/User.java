@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
-public class User extends Person {
+public class User extends Person {  // Héritage de Person
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email is not valid")

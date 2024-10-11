@@ -18,7 +18,7 @@ public class UserService {
         user.setFirstname(registerDTO.getFirstname());
         user.setLastname(registerDTO.getLastname());
         user.setEmail(registerDTO.getEmail());
-        user.setPassword(registerDTO.getPassword());
+        user.setPassword(registerDTO.getPassword());  // Pense à hasher le mot de passe ici
 
         return userRepository.save(user);
     }
@@ -28,6 +28,6 @@ public class UserService {
         if (foundUser != null && foundUser.getPassword().equals(loginDTO.getPassword())) {
             return foundUser;
         }
-        return null;
+        return null; // Ou lancer une exception personnalisée
     }
 }

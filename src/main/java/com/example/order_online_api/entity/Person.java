@@ -1,7 +1,6 @@
 package com.example.order_online_api.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -17,13 +16,13 @@ public class Person {
     private String placedate;
     private String maritalStatus;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "person_id")
-    private List<Address> address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "person_id")
-    private List<Contact> contact;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_id", referencedColumnName = "id")
+    private Contact contact;
 
     // Getters et setters
 
@@ -75,19 +74,19 @@ public class Person {
         this.maritalStatus = maritalStatus;
     }
 
-    public List<Address> getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(List<Address> address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public List<Contact> getContact() {
+    public Contact getContact() {
         return contact;
     }
 
-    public void setContact(List<Contact> contact) {
+    public void setContact(Contact contact) {
         this.contact = contact;
     }
 }

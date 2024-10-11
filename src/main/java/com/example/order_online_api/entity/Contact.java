@@ -1,9 +1,6 @@
 package com.example.order_online_api.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Contact {
@@ -12,8 +9,8 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type;
-    private String value;
+    private String phoneNumber;
+    private String email;
 
     // Getters et setters
     public Long getId() {
@@ -24,19 +21,19 @@ public class Contact {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getValue() {
-        return value;
+    public String getEmail() {
+        return email;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
