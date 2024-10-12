@@ -1,9 +1,13 @@
 package com.example.order_online_api.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "persons")
 public class Person {
 
     @Id
@@ -24,8 +28,18 @@ public class Person {
     @JoinColumn(name = "contact_id", referencedColumnName = "id")
     private Contact contact;
 
-    // Getters et setters
 
+
+    @CreationTimestamp
+    @Column(updatable = false)  // The created_at field should not be updated once set
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -88,5 +102,21 @@ public class Person {
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
